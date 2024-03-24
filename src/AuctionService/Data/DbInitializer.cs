@@ -22,6 +22,8 @@ public class DbInitializer
             return;
         }
 
+        Console.WriteLine("Seeding data...");
+
         var auctions = new List<Auction>()
         {
             // 1 Ford GT
@@ -60,7 +62,7 @@ public class DbInitializer
                     ImageUrl = "https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_960_720.jpg"
                 }
             },
-            // 3 Ford mustang
+            // 3 Ford Mustang
             new Auction
             {
                 Id = Guid.Parse("bbab4d5a-8565-48b1-9450-5ac2a5c4a654"),

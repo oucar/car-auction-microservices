@@ -1,4 +1,4 @@
-namespace AuctionService.Entities;
+namespace AuctionService.DTOs;
 
 // Entities represent real-world objects in our application with both data and behavior,
 // closely tied to our business logic. They are often used to interact with our database.
@@ -6,7 +6,7 @@ namespace AuctionService.Entities;
 // DTOs (Data Transfer Objects) are used solely for transferring data between different
 // parts of our application. They contain only data and no behavior, making them lightweight
 // and ideal for communication between different layers or components.
-public class Auction
+public class AuctionDto
 {
     /// <summary>
     /// Unique identifier for the auction.
@@ -16,7 +16,7 @@ public class Auction
     /// <summary>
     /// Minimum price at which the item can be sold.
     /// </summary>
-    public int ReservePrice { get; set; } = 0;
+    public int ReservePrice { get; set; }
     
     /// <summary>
     /// Name of the seller.
@@ -31,22 +31,22 @@ public class Auction
     /// <summary>
     /// Amount for which the item was sold (if the auction is closed).
     /// </summary>
-    public int? SoldAmount { get; set; }
+    public int SoldAmount { get; set; }
     
     /// <summary>
     /// Current highest bid amount.
     /// </summary>
-    public int? CurrentHighBid { get; set; }
+    public int CurrentHighBid { get; set; }
     
     /// <summary>
     /// Date and time when the auction was created.
     /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; }
     
     /// <summary>
     /// Date and time when the auction was last updated.
     /// </summary>
-    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; }
     
     /// <summary>
     /// Date and time when the auction will end.
@@ -56,10 +56,15 @@ public class Auction
     /// <summary>
     /// Status of the auction (e.g., Open, Closed).
     /// </summary>
-    public Status Status { get; set; }
+    public string Status { get; set; }
     
     /// <summary>
-    /// The item being auctioned.
+    /// Details of the item being auctioned.
     /// </summary>
-    public Item Item { get; set; }
+    public string Make { get; set; }
+    public string Model { get; set; }
+    public int Year { get; set; }
+    public string Color { get; set; }
+    public int Mileage { get; set; }
+    public string ImageUrl { get; set; }
 }
