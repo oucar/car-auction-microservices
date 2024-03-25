@@ -35,6 +35,8 @@ app.Run();
 // Retry policy for handling transient errors - Polly library
 // Defines a retry policy using the Polly library, which is commonly used for
 // handling transient faults in distributed systems, such as temporary network issues or service failures.
+// Example: Start SearchService without starting the AuctionService and it'll keep retrying every 3 seconds.
+// Once you start the AuctionService, the SearchService will start receiving data.
 static IAsyncPolicy<HttpResponseMessage> GetPolicy() => // Configure the policy to handle temporary network errors or server overload by retrying the HTTP request.
     HttpPolicyExtensions
         // Configure the policy to handle temporary network errors or server overload by retrying the HTTP request.
