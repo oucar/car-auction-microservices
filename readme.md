@@ -20,8 +20,12 @@
 - Identity Provider: Single Sign On (SSO) --> Auth0, Okta, Azure AD etc
 - Building and deploying microservices is usually done using containers. --> Docker, Kubernetes --> $$
 - Not usually recommended for small applications and/or small teams. Here I am though, building an auction app with microservices lol
+- Syncronous Messaging is not recommended. Use Asynchronous Messaging instead. --> Service Bus!
 
-# Nuget packages and other development tools
+# Nuget packages and other development tools 
+## TODO COMPLETE THIS SECTION
 - Microsft.EntityFrameworkCore.Design: EF Core tools for the .NET CLI
 - Npgsql.EntityFrameworkCore.PostgreSQL: PostgreSQL provider for Entity Framework Core
 - Automapper.Extensions.Microsoft.DependencyInjection: AutoMapper extensions for Microsoft.Extensions.DependencyInjection
+- MongoDB.Entities: MongoDB ODM for .NET
+- Microsoft.Extensions.Http.Polly: Polly policies for HttpClient, used for resilience and transient-fault-handling
