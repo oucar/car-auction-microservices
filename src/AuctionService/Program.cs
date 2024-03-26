@@ -1,6 +1,7 @@
+using AuctionService;
 using AuctionService.Data;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,31 @@ builder.Services.AddDbContext<AuctionDbContext>(opt =>
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+// Register MassTransit
+builder.Services.AddMassTransit(x =>
+{
+    // The Outbox pattern ensures reliable message delivery by storing outgoing messages
+    // alongside application data within the same database transaction. This allows for
+    // atomic commits, ensuring messages are delivered exactly once, even in the face of failures.
+    // So that we would have data consistency between the application data and the outgoing messages
+    // as well as the data in each services' database.
+    x.AddEntityFrameworkOutbox<AuctionDbContext>(o =>
+    {
+        o.QueryDelay = TimeSpan.FromSeconds(10);
+        o.UsePostgres();
+        o.UseBusOutbox();
+    });
+    x.AddConsumersFromNamespaceContaining<AuctionCreatedFaultConsumer>();
+    x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("auction", false));
+
+    // Configuring the mass transit bus
+    x.UsingRabbitMq(
+        (context, cfg) =>
+        {
+            cfg.ConfigureEndpoints(context);
+        }
+    );
+});
 
 var app = builder.Build();
 
