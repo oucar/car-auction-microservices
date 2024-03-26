@@ -21,6 +21,11 @@
 - Building and deploying microservices is usually done using containers. --> Docker, Kubernetes --> $$
 - Not usually recommended for small applications and/or small teams. Here I am though, building an auction app with microservices lol
 - Syncronous Messaging is not recommended. Use Asynchronous Messaging instead. --> Service Bus!
+- No request and response in async messaging. Just fire and forget. 
+- RabbitMQ: Open source message broker software that implements the Advanced Message Queuing Protocol **(AMQP)**.
+    - Message Broker: An intermediary computer program module that translates a message from the formal messaging protocol of the sender to the formal messaging protocol of the receiver.
+    - Producer/Consumer: Producer sends a message to the broker, and the broker sends it to the consumer.
+    - Exchange: A message routing agent that routes messages to one or more queues.
 
 # Nuget packages and other development tools 
 ## TODO COMPLETE THIS SECTION

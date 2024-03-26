@@ -16,3 +16,10 @@ services:
       - 27017:27017
     volumes:
       - /var/lib/mongodb/data
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      # 5672 is the default port for AMQP 0-9-1 without TLS
+      # 15672 is the default port for the management plugin
+      - 5672:5672
+      - 15672:15672
