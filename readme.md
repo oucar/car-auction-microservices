@@ -34,3 +34,4 @@
 - Automapper.Extensions.Microsoft.DependencyInjection: AutoMapper extensions for Microsoft.Extensions.DependencyInjection
 - MongoDB.Entities: MongoDB ODM for .NET
 - Microsoft.Extensions.Http.Polly: Polly policies for HttpClient, used for resilience and transient-fault-handling
+- MassTransit: Distributed application framework for .NET - used with RabbitMQ
