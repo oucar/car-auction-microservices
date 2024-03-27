@@ -29,6 +29,7 @@
   - Exchange: A message routing agent that routes messages to one or more queues.
 - OpenID Connect and OAuth 2.0: Protocols used for authentication and authorization.
 - IdentityServer is a tool for managing user logins and permissions in software applications. Link: https://docs.duendesoftware.com/identityserver/v7
+- Note: IdentityServer part of this project uses Razor Pages for the UI as they mostly come out of the box. I implemented Register page. 
 - Single Sign On (SSO): A session/user authentication process that permits a user to enter one name and password in order to access multiple applications. Even though not required for this project, it is a good practice to implement SSO.
 - OAuth2: Checks if the user is authorized to access the resource.
   - Authorization Server: Issues tokens to the client after successfully authenticating the user. (FB Login, Google Login, your own Identity Server etc)
@@ -44,16 +45,3 @@
     - The resource server validates the access token.
     - If the access token is valid, the resource server serves the request.
 - OpenID Connect: An identity layer built on top of OAuth 2.0. It allows clients to verify the identity of the end-user based on the authentication performed by an authorization server.
-
-
-
-
-# Nuget packages and other development tools
-## TODO COMPLETE THIS SECTION
-
-- Microsft.EntityFrameworkCore.Design: EF Core tools for the .NET CLI
-- Npgsql.EntityFrameworkCore.PostgreSQL: PostgreSQL provider for Entity Framework Core
-- Automapper.Extensions.Microsoft.DependencyInjection: AutoMapper extensions for Microsoft.Extensions.DependencyInjection
-- MongoDB.Entities: MongoDB ODM for .NET
-- Microsoft.Extensions.Http.Polly: Polly policies for HttpClient, used for resilience and transient-fault-handling
-- MassTransit: Distributed application framework for .NET - used with RabbitMQ
