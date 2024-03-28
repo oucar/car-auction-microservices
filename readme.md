@@ -46,12 +46,12 @@
     - If the access token is valid, the resource server serves the request.
 - OpenID Connect: An identity layer built on top of OAuth 2.0. It allows clients to verify the identity of the end-user based on the authentication performed by an authorization server.
 - Reverse Proxy: A server that sits between clients and backend servers. It forwards client requests to the appropriate backend server, and then returns the server's response to the client. 
+- Gateway service doesn't provide routing to IdentityServer. It is a separate service.
   - Heavily used in microservices architecture. Provides single surface area for all the requests.
   - Client unaware of any internal services.
   - Load balancing, SSL termination, caching, compression etc.
   - For instance --> all the services are going through `localhost:6001` which is the main gateway, and then it routes the request to the appropriate service. 
 - Used YARP (Yet Another Reverse Proxy) in this project. It is a reverse proxy that is built on top of ASP.NET Core.
-
 
 
 ## To start the infrastructure services:
