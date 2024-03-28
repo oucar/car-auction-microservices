@@ -4,7 +4,6 @@ using Polly.Extensions.Http;
 using SearchService;
 using MassTransit;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,21 +13,37 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddHttpClient<AuctionSvcHttpClient>().AddPolicyHandler(GetPolicy());
 
 // Register MassTransit
-builder.Services.AddMassTransit(x => 
+builder.Services.AddMassTransit(x =>
 {
     x.AddConsumersFromNamespaceContaining<AuctionCreatedConsumer>();
     x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("search", false));
-    x.UsingRabbitMq((context, cfg) => 
-    {
-        // Configure the RabbitMQ host
-        cfg.ReceiveEndpoint("search-auction-created", e => 
+    x.UsingRabbitMq(
+        (context, cfg) =>
         {
-            // 5 retries, 5 seconds apart
-            e.UseMessageRetry(r => r.Interval(5, 5));
-            e.ConfigureConsumer<AuctionCreatedConsumer>(context);
-        });
-        cfg.ConfigureEndpoints(context);
-    });
+            // For Dockerizing the RabbitMQ
+            cfg.Host(
+                builder.Configuration["RabbitMq:Host"],
+                "/",
+                host =>
+                {
+                    host.Username(builder.Configuration.GetValue("RabbitMq:Username", "guest"));
+                    host.Password(builder.Configuration.GetValue("RabbitMq:Password", "guest"));
+                }
+            );
+
+            // Configure the RabbitMQ host
+            cfg.ReceiveEndpoint(
+                "search-auction-created",
+                e =>
+                {
+                    // 5 retries, 5 seconds apart
+                    e.UseMessageRetry(r => r.Interval(5, 5));
+                    e.ConfigureConsumer<AuctionCreatedConsumer>(context);
+                }
+            );
+            cfg.ConfigureEndpoints(context);
+        }
+    );
 });
 
 var app = builder.Build();
