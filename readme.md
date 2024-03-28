@@ -56,3 +56,5 @@
 
 ## To start the infrastructure services:
 - Use `docker compose up -d` 
+- Also do not forget to build the docker images for each service --> `docker compose build gateway-svc` for instance.
+- NOTE: Airplay Receiver uses port 5000, so it doesn't allow Identity-svc to run on port 5000. We either have to stop Airplay Receiver or change the port of Identity-svc.
