@@ -59,8 +59,8 @@
   - Load balancing, SSL termination, caching, compression etc.
   - For instance --> all the services are going through `localhost:6001` which is the main gateway, and then it routes the request to the appropriate service. 
 - Used YARP (Yet Another Reverse Proxy) in this project. It is a reverse proxy that is built on top of ASP.NET Core.
-
-
+- gRPC is a high-performance, open-source universal RPC framework. It is language agnostic and can be used to connect services written in different languages. It is based on HTTP/2 and Protocol Buffers.
+- auctions.proto: Protocol Buffers file that defines the service and the messages that the service uses.
 ## To start the infrastructure services:
 - Use `docker compose up -d` 
 - Also do not forget to build the docker images for each service --> `docker compose build gateway-svc` for instance.
