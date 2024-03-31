@@ -1,4 +1,4 @@
-using AuctionService.DTOs;
+﻿using AuctionService.DTOs;
 using AuctionService.Entities;
 using AutoMapper;
 using Contracts;
@@ -9,17 +9,11 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
-        // Mapping from Auction to AuctionDto
-        CreateMap<Auction, AuctionDto>()
-            .IncludeMembers(x => x.Item);
+        CreateMap<Auction, AuctionDto>().IncludeMembers(x => x.Item);
         CreateMap<Item, AuctionDto>();
-
-        // Mapping from CreateAuctionDto to Auction and Item
         CreateMap<CreateAuctionDto, Auction>()
             .ForMember(d => d.Item, o => o.MapFrom(s => s));
         CreateMap<CreateAuctionDto, Item>();
-
-        // Mapping from AuctionDto to AuctionCreated and AuctionUpdated contracts
         CreateMap<AuctionDto, AuctionCreated>();
         CreateMap<Auction, AuctionUpdated>().IncludeMembers(a => a.Item);
         CreateMap<Item, AuctionUpdated>();

@@ -1,4 +1,4 @@
-using AuctionService.Entities;
+﻿using AuctionService.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionService.Data;
@@ -18,11 +18,9 @@ public class DbInitializer
 
         if (context.Auctions.Any())
         {
-            Console.WriteLine("Data already exists in the database. Not seeding.");
+            Console.WriteLine("Already have data - no need to seed");
             return;
         }
-
-        Console.WriteLine("Seeding data...");
 
         var auctions = new List<Auction>()
         {
@@ -62,7 +60,7 @@ public class DbInitializer
                     ImageUrl = "https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_960_720.jpg"
                 }
             },
-            // 3 Ford Mustang
+            // 3 Ford mustang
             new Auction
             {
                 Id = Guid.Parse("bbab4d5a-8565-48b1-9450-5ac2a5c4a654"),

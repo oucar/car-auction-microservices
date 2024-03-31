@@ -1,82 +1,22 @@
-using MongoDB.Entities;
+﻿using MongoDB.Entities;
 
-namespace SearchService
+namespace SearchService;
+
+public class Item : Entity
 {
-    public class Item : Entity
-    {
-        /// <summary>
-        /// Gets or sets the reserve price of the item.
-        /// </summary>
-        public int ReservePrice { get; set; }
-
-        /// <summary>
-        /// Gets or sets the seller of the item.
-        /// </summary>
-        public string Seller { get; set; }
-
-        /// <summary>
-        /// Gets or sets the winner of the item.
-        /// </summary>
-        public string Winner { get; set; }
-
-        /// <summary>
-        /// Gets or sets the amount for which the item was sold.
-        /// </summary>
-        public int SoldAmount { get; set; }
-
-        /// <summary>
-        /// Gets or sets the current highest bid for the item.
-        /// </summary>
-        public int CurrentHighBid { get; set; }
-
-        /// <summary>
-        /// Gets or sets the date and time when the item was created.
-        /// </summary>
-        public DateTime CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or sets the date and time when the item was last updated.
-        /// </summary>
-        public DateTime UpdatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or sets the date and time when the auction for the item ends.
-        /// </summary>
-        public DateTime AuctionEnd { get; set; }
-
-        /// <summary>
-        /// Gets or sets the status of the item.
-        /// </summary>
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or sets the make of the item.
-        /// </summary>
-        public string Make { get; set; }
-
-        /// <summary>
-        /// Gets or sets the model of the item.
-        /// </summary>
-        public string Model { get; set; }
-
-        /// <summary>
-        /// Gets or sets the year of the item.
-        /// </summary>
-        public int Year { get; set; }
-
-        /// <summary>
-        /// Gets or sets the color of the item.
-        /// </summary>
-        public string Color { get; set; }
-
-        /// <summary>
-        /// Gets or sets the mileage of the item.
-        /// </summary>
-        public int Mileage { get; set; }
-
-        /// <summary>
-        /// Gets or sets the URL of the image of the item.
-        /// </summary>
-        public string ImageUrl { get; set; }
-    }
+    public int ReservePrice { get; set; }
+    public string Seller { get; set; }
+    public string Winner { get; set; }
+    public int SoldAmount { get; set; }
+    public int CurrentHighBid { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
+    public DateTime AuctionEnd { get; set; }
+    public string Status { get; set; }
+    public string Make { get; set; }
+    public string Model { get; set; }
+    public int Year { get; set; }
+    public string Color { get; set; }
+    public int Mileage { get; set; }
+    public string ImageUrl { get; set; }
 }

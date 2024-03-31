@@ -1,4 +1,4 @@
-using AuctionService.Data;
+﻿using AuctionService.Data;
 using AuctionService.Entities;
 using Contracts;
 using MassTransit;
@@ -9,7 +9,6 @@ public class AuctionFinishedConsumer : IConsumer<AuctionFinished>
 {
     private readonly AuctionDbContext _dbContext;
 
-    // Injecting the AuctionDbContext instance into the consumer
     public AuctionFinishedConsumer(AuctionDbContext dbContext)
     {
         _dbContext = dbContext;

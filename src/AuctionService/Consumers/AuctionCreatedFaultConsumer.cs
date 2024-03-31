@@ -1,4 +1,4 @@
-using Contracts;
+﻿using Contracts;
 using MassTransit;
 
 namespace AuctionService;
@@ -18,7 +18,7 @@ public class AuctionCreatedFaultConsumer : IConsumer<Fault<AuctionCreated>>
         }
         else 
         {
-            Console.WriteLine("ERROR: Not an argument exception!");
+            Console.WriteLine("Not an argument exception - update error dashboard somewhere");
         }
     }
 }

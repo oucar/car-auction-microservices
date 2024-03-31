@@ -1,4 +1,4 @@
-using AuctionService.Data;
+﻿using AuctionService.Data;
 using Contracts;
 using MassTransit;
 
@@ -19,8 +19,6 @@ public class BidPlacedConsumer : IConsumer<BidPlaced>
 
         var auction = await _dbContext.Auctions.FindAsync(context.Message.AuctionId);
 
-        // If there is no current high bid or the bid status is accepted and 
-        // the amount is higher than the current high bid
         if (auction.CurrentHighBid == null 
             || context.Message.BidStatus.Contains("Accepted") 
             && context.Message.Amount > auction.CurrentHighBid)
