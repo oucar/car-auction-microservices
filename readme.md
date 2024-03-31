@@ -19,7 +19,9 @@
 - Next.JS + Tailwind for BFF (Backend for Frontend) --> Next.js is a React framework that enables functionality such as server-side rendering and generating static websites for React based web applications.
   - BFF is a design pattern that allows you to build a backend specifically for your frontend. It is a separate service that is responsible for handling requests from the client and fetching data from the backend services.
   - Zustand: A small, fast and scalable bearbones state-management solution. It has a React hook API and a small footprint (1.3kB minified and gzipped).
-  
+  - NextAuth.js --> Auth.js: An open source authentication library for Next.js applications. It provides a set of components and utilities for handling authentication in your application.
+    - https://next-auth.js.org/
+
 
 - Microservices are not a silver bullet. They are complex and require a lot of effort to manage.
 - Need gateway to route the request to the appropriate services.
