@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AuctionService.DTOs;
 
@@ -22,7 +22,6 @@ public class CreateAuctionDto
     [Required]
     public string ImageUrl { get; set; }
 
-    // Minimum price that the seller is willing to accept
     [Required]
     public int ReservePrice { get; set; }
 

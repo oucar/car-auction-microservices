@@ -12,19 +12,13 @@ public class SeedData
 {
     public static void EnsureSeedData(WebApplication app)
     {
-        // Create a new scope to retrieve scoped services
         using var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
-        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
         context.Database.Migrate();
 
         var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-        if(userMgr.Users.Any())
-        {
-            Log.Debug("Users already exist");
-            return;
-        }
-
+        if (userMgr.Users.Any()) return;
 
         var alice = userMgr.FindByNameAsync("alice").Result;
         if (alice == null)
