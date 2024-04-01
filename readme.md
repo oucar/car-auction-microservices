@@ -61,6 +61,8 @@
 - Used YARP (Yet Another Reverse Proxy) in this project. It is a reverse proxy that is built on top of ASP.NET Core.
 - gRPC is a high-performance, open-source universal RPC framework. It is language agnostic and can be used to connect services written in different languages. It is based on HTTP/2 and Protocol Buffers.
 - auctions.proto: Protocol Buffers file that defines the service and the messages that the service uses.
+- Used SignalR for real-time communication between the client and the server. SignalR is a library that simplifies adding real-time web functionality to applications.
+  - Used for bidding, notifications and live auction updates.
 ## To start the infrastructure services:
 - Use `docker compose up -d` 
 - Also do not forget to build the docker images for each service --> `docker compose build gateway-svc` for instance.

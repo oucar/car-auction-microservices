@@ -56,7 +56,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.MapGrpcService<GrpcAuctionService>();
 
 try
