@@ -63,7 +63,9 @@
 - auctions.proto: Protocol Buffers file that defines the service and the messages that the service uses.
 - Used SignalR for real-time communication between the client and the server. SignalR is a library that simplifies adding real-time web functionality to applications.
   - Used for bidding, notifications and live auction updates.
+  - Reserved price constraint: meaning that the bid has to be higher than the reserved price.
 ## To start the infrastructure services:
+- docker compose build to build the images
 - Use `docker compose up -d` 
 - Also do not forget to build the docker images for each service --> `docker compose build gateway-svc` for instance.
 - NOTE: Airplay Receiver uses port 5000, so it doesn't allow Identity-svc to run on port 5000. We either have to stop Airplay Receiver or change the port of Identity-svc.
