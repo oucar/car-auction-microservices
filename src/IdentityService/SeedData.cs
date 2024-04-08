@@ -18,7 +18,8 @@ public class SeedData
 
         var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-        if (userMgr.Users.Any()) return;
+        if (userMgr.Users.Any())
+            return;
 
         var alice = userMgr.FindByNameAsync("alice").Result;
         if (alice == null)
@@ -35,9 +36,12 @@ public class SeedData
                 throw new Exception(result.Errors.First().Description);
             }
 
-            result = userMgr.AddClaimsAsync(alice, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                        }).Result;
+            result = userMgr
+                .AddClaimsAsync(
+                    alice,
+                    new Claim[] { new Claim(JwtClaimTypes.Name, "Alice Smith"), }
+                )
+                .Result;
             if (!result.Succeeded)
             {
                 throw new Exception(result.Errors.First().Description);
@@ -64,9 +68,9 @@ public class SeedData
                 throw new Exception(result.Errors.First().Description);
             }
 
-            result = userMgr.AddClaimsAsync(bob, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, "Bob Smith"),
-                        }).Result;
+            result = userMgr
+                .AddClaimsAsync(bob, new Claim[] { new Claim(JwtClaimTypes.Name, "Bob Smith"), })
+                .Result;
             if (!result.Succeeded)
             {
                 throw new Exception(result.Errors.First().Description);
@@ -76,6 +80,35 @@ public class SeedData
         else
         {
             Log.Debug("bob already exists");
+        }
+
+        var onur = userMgr.FindByNameAsync("onur").Result;
+        if (onur == null)
+        {
+            onur = new ApplicationUser
+            {
+                UserName = "onur",
+                Email = "onur@email.com",
+                EmailConfirmed = true
+            };
+            var result = userMgr.CreateAsync(onur, "Pass123$").Result;
+            if (!result.Succeeded)
+            {
+                throw new Exception(result.Errors.First().Description);
+            }
+
+            result = userMgr
+                .AddClaimsAsync(onur, new Claim[] { new Claim(JwtClaimTypes.Name, "Onur Ucar"), })
+                .Result;
+            if (!result.Succeeded)
+            {
+                throw new Exception(result.Errors.First().Description);
+            }
+            Log.Debug("onur created");
+        }
+        else
+        {
+            Log.Debug("onur already exists");
         }
     }
 }
